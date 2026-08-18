@@ -1,0 +1,127 @@
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Sora:wght@400;500;600;700;800&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; height: 100%; background: #0c0921; color: #f2eeff; }
+        body { min-height: 100vh; font-family: Sora, "DM Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+        #root { width: 100%; min-height: 100%; background: #0c0921; }
+        h1, h2, h3, .sima-display { font-family: Poppins, Sora, system-ui, sans-serif; }
+        @keyframes bounce { 0%, 100% { opacity: 1; transform: translateY(0); } 50% { opacity: 0.6; transform: translateY(-8px); } }
+        @keyframes mascotFloat { 0% { transform: translateY(0); } 50% { transform: translateY(-6px); } 100% { transform: translateY(0); } }
+        @keyframes simaFloatSlow { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-10px) rotate(2deg); } }
+        @keyframes simaSpinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes simaPulseSoft { 0%, 100% { opacity: 0.55; transform: scale(1); } 50% { opacity: 0.9; transform: scale(1.06); } }
+        .sima-mascot {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                border-radius: 50%;
+                background: transparent;
+                mix-blend-mode: normal;
+                transform-origin: 50% 50%;
+                animation: mascotFloat 4s ease-in-out infinite;
+        }
+        .sima-illo-float { animation: simaFloatSlow 6s ease-in-out infinite; }
+        .sima-illo-spin { animation: simaSpinSlow 22s linear infinite; transform-origin: center; }
+        .sima-illo-pulse { animation: simaPulseSoft 3.5s ease-in-out infinite; }
+        .sima-pill-btn { border-radius: 999px !important; }
+        .sima-scribble { stroke-linecap: round; stroke-linejoin: round; fill: none; }
+
+        /* ── Splash + Landing signature motion ─────────────────────────── */
+        @keyframes simaBlink {
+                0%, 100% { opacity: 1; transform: scale(1); }
+                50% { opacity: 0.32; transform: scale(0.93); }
+        }
+        @keyframes simaAuraPulse {
+                0%, 100% { opacity: 0.55; transform: scale(0.92); }
+                50% { opacity: 1; transform: scale(1.08); }
+        }
+        @keyframes simaAuroraDrift {
+                0% { transform: translate(0, 0) scale(1); }
+                33% { transform: translate(3%, -4%) scale(1.08); }
+                66% { transform: translate(-3%, 3%) scale(0.96); }
+                100% { transform: translate(0, 0) scale(1); }
+        }
+        @keyframes simaShimmer {
+                0% { background-position: -160% 0; }
+                100% { background-position: 160% 0; }
+        }
+        @keyframes simaFadeUp {
+                from { opacity: 0; transform: translateY(14px); }
+                to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes simaWordIn {
+                from { opacity: 0; transform: translateY(0.4em); filter: blur(4px); }
+                to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+        .sima-splash-logo { animation: simaBlink 1.7s ease-in-out infinite; }
+        .sima-aura-ring { animation: simaAuraPulse 1.7s ease-in-out infinite; }
+        .sima-aurora-blob { animation: simaAuroraDrift 16s ease-in-out infinite; }
+        .sima-aurora-blob.sima-aurora-b { animation-duration: 21s; animation-direction: reverse; }
+        .sima-aurora-blob.sima-aurora-c { animation-duration: 26s; }
+        .sima-shimmer-btn { background-size: 200% 100%; animation: simaShimmer 3.2s linear infinite; }
+        .sima-fade-up { animation: simaFadeUp 0.6s cubic-bezier(0.16,1,0.3,1) both; }
+        .sima-word-in { display: inline-block; animation: simaWordIn 0.7s cubic-bezier(0.16,1,0.3,1) both; }
+        .sima-rail { scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+        .sima-rail::-webkit-scrollbar { display: none; }
+        .sima-rail-card { scroll-snap-align: start; }
+        .sima-glass { backdrop-filter: blur(22px) saturate(1.4); -webkit-backdrop-filter: blur(22px) saturate(1.4); }
+        .sima-segment-thumb { transition: transform 0.35s cubic-bezier(0.16,1,0.3,1); }
+
+        /* ── Auth screens: single column on mobile, split panel on wide viewports ── */
+        .sima-auth-illustration { display: none; }
+        .sima-auth-form-col { width: 100%; }
+        @media (min-width: 900px) {
+                .sima-auth-shell { flex-direction: row !important; }
+                .sima-auth-illustration { display: flex !important; }
+                .sima-auth-form-col { width: 50%; max-width: 480px; }
+        }
+
+        /* ── Landing page: make real use of wide viewports instead of floating a
+           phone-width column in a sea of background ── */
+        .sima-landing-wrap { max-width: 560px; }
+        .sima-rail-bleed {
+                display: flex;
+                gap: 12px;
+                overflow-x: auto;
+                padding-bottom: 6px;
+                margin-left: -18px;
+                margin-right: -18px;
+                padding-left: 18px;
+                padding-right: 18px;
+        }
+        .sima-hero-visual { order: 0; }
+        .sima-hero-copy { order: 1; }
+        @media (min-width: 900px) {
+                .sima-landing-wrap { max-width: 1080px; }
+                .sima-hero-grid {
+                        display: grid !important;
+                        grid-template-columns: 1.05fr 0.95fr;
+                        align-items: center;
+                        gap: 8px 48px;
+                        text-align: left !important;
+                }
+                .sima-hero-copy { order: 0; text-align: left !important; }
+                .sima-hero-visual { order: 1; margin: 0 !important; }
+                .sima-hero-copy .sima-hero-badge,
+                .sima-hero-copy .sima-hero-tagline { margin-left: 0 !important; margin-right: 0 !important; }
+                .sima-rail-bleed {
+                        display: grid !important;
+                        grid-template-columns: repeat(3, 1fr);
+                        overflow: visible !important;
+                        margin: 0 !important;
+                        padding: 0 !important;
+                }
+                .sima-cta-panel { max-width: 640px; margin-left: auto !important; margin-right: auto !important; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+                .sima-splash-logo, .sima-aura-ring, .sima-aurora-blob, .sima-shimmer-btn,
+                .sima-fade-up, .sima-word-in, .sima-mascot, .sima-illo-float, .sima-illo-spin, .sima-illo-pulse {
+                        animation: none !important;
+                }
+        }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-thumb { background: #372a78; border-radius: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+    
